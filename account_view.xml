@@ -20,7 +20,7 @@
 		<form string="Sucursal" >
 			<field name="name" />
 			<group string="Usuarios">
-				<field name="user_ids" />
+				<field name="user_ids" readonly="1"/>
 			</group>
 		</form>
 	    </field>
