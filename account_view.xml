@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+	<!-- account_voucher.view_vendor_receipt_dialog_form -->
+
+        <record id="res_branch_tree_view" model="ir.ui.view">
+            <field name="name">res.branch.tree</field>
+            <field name="model">res.branch</field>
+            <field name="arch" type="xml">
+		<tree string="Sucursal" >
+			<field name="name" />
+		</tree>
+	    </field>
+	</record>
+
+        <record id="action_res_branch" model="ir.actions.act_window">
+            <field name="name">Sucursales</field>
+            <field name="res_model">res.branch</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem action="action_res_branch" id="menu_res_branch" 
+		parent="account.menu_configuration_misc" sequence="3" />
+
+
+    </data>
+</openerp>
