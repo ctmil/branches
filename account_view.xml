@@ -13,6 +13,19 @@
 	    </field>
 	</record>
 
+        <record id="res_branch_form_view" model="ir.ui.view">
+            <field name="name">res.branch.form</field>
+            <field name="model">res.branch</field>
+            <field name="arch" type="xml">
+		<form string="Sucursal" >
+			<field name="name" />
+			<group string="Usuarios">
+				<field name="user_ids" />
+			</group>
+		</form>
+	    </field>
+	</record>
+
         <record id="action_res_branch" model="ir.actions.act_window">
             <field name="name">Sucursales</field>
             <field name="res_model">res.branch</field>
@@ -23,6 +36,17 @@
         <menuitem action="action_res_branch" id="menu_res_branch" 
 		parent="account.menu_configuration_misc" sequence="3" />
 
+	
+        <record id="user_branch_form_view" model="ir.ui.view">
+            <field name="name">user.branch.form</field>
+            <field name="model">res.users</field>
+	    <field name="inherit_id" ref="base.view_users_form" />
+            <field name="arch" type="xml">
+		<field name="active" position="after">
+			<field  name="branch_id" />
+		</field>
+	    </field>
+	</record>
 
     </data>
 </openerp>

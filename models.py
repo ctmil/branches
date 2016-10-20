@@ -17,4 +17,9 @@ class res_branch(models.Model):
 	_description = 'Sucursal'
 
 	name = fields.Char('Nombre')
+	user_ids = fields.One2many(comodel_name='res.users',inverse_name='branch_id',string='Usuarios')
 
+class res_users(models.Model):
+	_inherit = 'res.users'
+
+	branch_id = fields.Many2one('res.branch',string='Sucursal')
