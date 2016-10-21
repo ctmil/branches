@@ -30,8 +30,8 @@ class account_invoice(models.Model):
 	branch_id = fields.Many2one('res.branch',string='Sucursal')
 
         @api.multi
-        def write(self, vals):
+        def create(self, vals):
 		import pdb;pdb.set_trace()
                 purchase_state = vals.get('state','')
-                return super(account_invoice,self).write(vals)
+                return super(account_invoice,self).create(vals)
 
