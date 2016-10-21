@@ -136,5 +136,16 @@
 	    </field>
 	</record>
 
+        <record id="account_move_search_branch" model="ir.ui.view">
+            <field name="name">account.move.search.branch</field>
+            <field name="model">account.move</field>
+	    <field name="inherit_id" ref="account.view_account_move_filter" />
+            <field name="arch" type="xml">
+		<field name="date" position="after">
+			<field name="branch_id" />
+		</field>
+	    </field>
+	</record>
+
     </data>
 </openerp>
