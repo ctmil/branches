@@ -78,6 +78,9 @@
 		<field name="period_id" position="after">
 			<field name="branch_id" />
 		</field>
+                <filter string="Status" context="{'group_by':'state'}" position="after">
+			<filter string="Sucursales" context="{'group_by':'branch_id'}" />
+		</filter>
 	    </field>
 	</record>
 
