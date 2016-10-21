@@ -59,5 +59,16 @@
 	    </field>
 	</record>
 
+        <record id="account_invoice_form_branch" model="ir.ui.view">
+            <field name="name">account.invoice.form.branch</field>
+            <field name="model">account.invoice</field>
+	    <field name="inherit_id" ref="account.invoice_form" />
+            <field name="arch" type="xml">
+		<field name="account_id" position="after">
+			<field name="branch_id" />
+		</field>
+	    </field>
+	</record>
+
     </data>
 </openerp>
