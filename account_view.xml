@@ -125,5 +125,16 @@
 	    </field>
 	</record>
 
+        <record id="account_move_form_branch" model="ir.ui.view">
+            <field name="name">account.move.form.branch</field>
+            <field name="model">account.moev</field>
+	    <field name="inherit_id" ref="account.view_move_form" />
+            <field name="arch" type="xml">
+		<field name="name" position="after">
+			<field name="branch_id" readonly="1"/>
+		</field>
+	    </field>
+	</record>
+
     </data>
 </openerp>
