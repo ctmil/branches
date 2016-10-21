@@ -31,11 +31,26 @@ class account_invoice(models.Model):
 
         @api.model
         def create(self, vals):
-		context = self.env.context()
+		context = self.env.context
 		uid = context.get('uid',False)
 		if uid:
 			user = self.env['res.users'].browse(uid)
 			if user.branch_id:
 				vals['branch_id'] = user.branch_id.id
                 return super(account_invoice,self).create(vals)
+
+class account_voucher(models.Model):
+	_inherit = 'account.voucher'
+	
+	branch_id = fields.Many2one('res.branch',string='Sucursal')
+
+        @api.model
+        def create(self, vals):
+		context = self.env.context
+		uid = context.get('uid',False)
+		if uid:
+			user = self.env['res.users'].browse(uid)
+			if user.branch_id:
+				vals['branch_id'] = user.branch_id.id
+                return super(account_voucher,self).create(vals)
 
