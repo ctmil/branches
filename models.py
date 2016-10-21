@@ -23,3 +23,15 @@ class res_users(models.Model):
 	_inherit = 'res.users'
 
 	branch_id = fields.Many2one('res.branch',string='Sucursal')
+
+class account_invoice(models.Model):
+	_inherit = 'account.invoice'
+	
+	branch_id = fields.Many2one('res.branch',string='Sucursal')
+
+        @api.multi
+        def write(self, vals):
+		import pdb;pdb.set_trace()
+                purchase_state = vals.get('state','')
+                return super(account_invoice,self).write(vals)
+
