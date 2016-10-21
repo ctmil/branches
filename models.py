@@ -31,7 +31,11 @@ class account_invoice(models.Model):
 
         @api.model
         def create(self, vals):
-		import pdb;pdb.set_trace()
-                purchase_state = vals.get('state','')
+		context = self.env.context()
+		uid = context.get('uid',False)
+		if uid:
+			user = self.env['res.users'].browse(uid)
+			if user.branch_id:
+				vals['branch_id'] = user.branch_id.id
                 return super(account_invoice,self).create(vals)
 

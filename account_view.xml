@@ -48,5 +48,16 @@
 	    </field>
 	</record>
 
+        <record id="account_invoice_tree_branch" model="ir.ui.view">
+            <field name="name">account.invoice.tree.branch</field>
+            <field name="model">account.invoice</field>
+	    <field name="inherit_id" ref="account.invoice_tree" />
+            <field name="arch" type="xml">
+		<field name="state" position="after">
+			<field name="branch_id" />
+		</field>
+	    </field>
+	</record>
+
     </data>
 </openerp>
