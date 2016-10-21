@@ -29,7 +29,7 @@ class account_invoice(models.Model):
 	
 	branch_id = fields.Many2one('res.branch',string='Sucursal')
 
-        @api.models
+        @api.model
         def create(self, vals):
 		import pdb;pdb.set_trace()
                 purchase_state = vals.get('state','')
