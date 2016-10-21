@@ -65,10 +65,22 @@
 	    <field name="inherit_id" ref="account.invoice_form" />
             <field name="arch" type="xml">
 		<field name="account_id" position="after">
+			<field name="branch_id" readonly="1"/>
+		</field>
+	    </field>
+	</record>
+
+        <record id="account_invoice_search_branch" model="ir.ui.view">
+            <field name="name">account.invoice.search.branch</field>
+            <field name="model">account.invoice</field>
+	    <field name="inherit_id" ref="account.view_account_invoice_filter" />
+            <field name="arch" type="xml">
+		<field name="period_id" position="after">
 			<field name="branch_id" />
 		</field>
 	    </field>
 	</record>
+
 
     </data>
 </openerp>
