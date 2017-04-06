@@ -68,3 +68,30 @@ class account_move(models.Model):
 			if user.branch_id:
 				vals['branch_id'] = user.branch_id.id
                 return super(account_move,self).create(vals)
+
+class account_move_line(models.Model):
+	_inherit = 'account.move.line'
+	
+	branch_id = fields.Many2one('res.branch',string='Sucursal')
+
+        @api.model
+        def create(self, vals):
+		context = self.env.context
+		uid = context.get('uid',False)
+		if uid:
+			user = self.env['res.users'].browse(uid)
+			if user.branch_id:
+				vals['branch_id'] = user.branch_id.id
+		else:
+			inv = context.get('invoice',False)
+			if inv and inv.branch_id:
+				vals['branch_id'] = inv.branch_id.id
+			else:
+				move_id = vals.get('move_id',False)
+				if move_id:
+					move = self.env['account.move'].browse(move_id)
+					user = move.create_uid
+					if user.branch_id:
+						vals['branch_id'] = user.branch_id.id
+				
+                return super(account_move_line,self).create(vals)
